@@ -9,13 +9,37 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r}
+library(tidyverse)
+library(tidyr)
+library(readr)
+```
+##### Get the data into a format where the five columns for Death[1-5] are replaced by two columns: Time, and Death. Time should be a number between 1 and 5 (look into the function parse_number); Death is a categorical variables with values "yes", "no" and "". Call the resulting data set deaths.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r}
+av <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/avengers/avengers.csv", stringsAsFactors = FALSE)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+deaths <- av %>%
+  pivot_longer(
+    cols = starts_with("Death"),
+    names_to = "Time",
+    values_to = "Death"
+  ) %>%
+  mutate(
+    Time = parse_number(Time),
+    Death = factor(Death, levels = c("YES", "NO", ""))
+  )
 
-```{r cars}
-summary(cars)
+show(deaths$Time)
+show(deaths$Death)
 ```
 
+##### Count the number of deaths (rows with "yes" in the Death column) for each Avenger
+
+```{r}
+average_deaths <- deaths %>%
+  filter(Death == "YES") %>%
+  summarize(avg_deaths = n() / n_distinct(av))
+
+show(average_deaths)
+```
