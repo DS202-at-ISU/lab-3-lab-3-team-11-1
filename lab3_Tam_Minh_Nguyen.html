@@ -531,18 +531,17 @@ return_summary</code></pre>
 ##  9 &quot;Amadeus Cho&quot;                       0
 ## 10 &quot;America Chavez&quot;                    0
 ## # ℹ 153 more rows</code></pre>
-<pre class="r"><code>average_deaths &lt;- mean(death_summary$Total_Deaths)
-average_deaths</code></pre>
+<pre class="r"><code>avg_deaths &lt;- mean(death_summary$Total_Deaths)
+avg_deaths</code></pre>
 <pre><code>## [1] 0.5460123</code></pre>
 <pre class="r"><code>### Fast check###
-hulk_deaths &lt;- deaths %&gt;%
-  filter(Name.Alias == &quot;Hulk&quot;) %&gt;%
-  summarise(Hulk_Total_Deaths = sum(tolower(Death) == &quot;yes&quot;, na.rm = TRUE))
-hulk_deaths</code></pre>
+deaths %&gt;%
+  filter(Name.Alias == &quot;&quot;) %&gt;%
+  summarise(Hulk_Total_Deaths = sum(tolower(Death) == &quot;yes&quot;, na.rm = TRUE))</code></pre>
 <pre><code>## # A tibble: 1 × 1
 ##   Hulk_Total_Deaths
 ##               &lt;int&gt;
-## 1                 0</code></pre>
+## 1                 7</code></pre>
 </div>
 <div id="individually" class="section level2">
 <h2>Individually</h2>
@@ -559,8 +558,8 @@ possible.</p>
 nobody is safe. Of the nine Avengers we see on screen — Iron Man, Hulk,
 Captain America, Thor, Hawkeye, Black Widow, Scarlet Witch, Quicksilver
 and The Vision — every single one of them has died at least once in the
-course of their time Avenging in the comics.” However, in the dataset,
-Hulk die 0 times</p>
+course of their time Avenging in the comics.” In the dataset, Hulk die 7
+times. Therefore, the quote is correct</p>
 </blockquote>
 </div>
 <div id="include-the-code" class="section level3">

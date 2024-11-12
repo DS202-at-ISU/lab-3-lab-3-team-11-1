@@ -84,16 +84,15 @@ return_summary
 ```
 
 ```{r}
-average_deaths <- mean(death_summary$Total_Deaths)
-average_deaths
+avg_deaths <- mean(death_summary$Total_Deaths)
+avg_deaths
 ```
 
 ```{r}
 ### Fast check###
-hulk_deaths <- deaths %>%
-  filter(Name.Alias == "Hulk") %>%
+deaths %>%
+  filter(Name.Alias == "") %>%
   summarise(Hulk_Total_Deaths = sum(tolower(Death) == "yes", na.rm = TRUE))
-hulk_deaths
 ```
 
 ## Individually
@@ -106,7 +105,7 @@ Each team member picks one of the statements in the FiveThirtyEight [analysis](h
 
 > Quote the statement you are planning to fact-check.
 >
-> The Quote I fast-check is "What’s more, if you’re a fan of the MCU, nobody is safe. Of the nine Avengers we see on screen — Iron Man, Hulk, Captain America, Thor, Hawkeye, Black Widow, Scarlet Witch, Quicksilver and The Vision — every single one of them has died at least once in the course of their time Avenging in the comics." However, in the dataset, Hulk die 0 times
+> The Quote I fast-check is "What’s more, if you’re a fan of the MCU, nobody is safe. Of the nine Avengers we see on screen — Iron Man, Hulk, Captain America, Thor, Hawkeye, Black Widow, Scarlet Witch, Quicksilver and The Vision — every single one of them has died at least once in the course of their time Avenging in the comics." In the dataset, Hulk die 7 times. Therefore, the quote is correct
 
 ### Include the code
 
