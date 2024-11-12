@@ -2,7 +2,7 @@
 title: "lab_3_assignment"
 author: "Tam Minh Nguyen"
 date: "2024-11-11"
-output: github_document
+output: "html_document"
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit the README.Rmd file -->
